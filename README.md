@@ -1,4 +1,4 @@
-# OutsourceBay Redesign
+# OutsourceBay
 
 A modern, premium-style redesign for OutsourceBay built with Next.js, Tailwind CSS, and Framer Motion.
 
