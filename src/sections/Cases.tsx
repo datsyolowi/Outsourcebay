@@ -27,9 +27,13 @@ const cases = [
 
 export default function Cases() {
   return (
-    <section className="relative py-24 bg-[#030712] text-white overflow-hidden">
+    <section
+      id="results"
+      className="relative scroll-mt-[90px] pt-10 pb-24 bg-[#030712] text-white overflow-hidden"
+    >
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"></div>
       {/* Background Glow */}
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/5 blur-[180px]" />
+      <div className="absolute left-1/2 top-20 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/5 blur-[180px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Heading */}
@@ -55,16 +59,26 @@ export default function Cases() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-16">
           {cases.map((item, index) => (
             <Reveal key={index} delay={index * 0.08}>
-              <div className="border border-white/[0.04] bg-white/[0.02] backdrop-blur-xl rounded-3xl p-6 hover:bg-white/[0.04] transition-all duration-300 h-full">
-                <div className="text-blue-400 text-sm uppercase tracking-[0.2em] mb-4">
-                  {item.result}
+              <div className="group relative overflow-hidden border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-blue-400/20 hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(59,130,246,0.08)] h-full">
+                {/* Hover Glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+
+                <div className="relative z-10">
+                  {/* Result */}
+                  <div className="inline-flex items-center rounded-full border border-blue-400/10 bg-blue-500/10 px-4 py-2 text-blue-300 text-xs uppercase tracking-[0.2em] mb-6 transition-all duration-300 group-hover:border-blue-400/20">
+                    {item.result}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold mb-4 transition-colors duration-300 group-hover:text-white">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-zinc-400 leading-relaxed transition-colors duration-300 group-hover:text-zinc-300">
+                    {item.description}
+                  </p>
                 </div>
-
-                <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
-
-                <p className="text-zinc-400 leading-relaxed">
-                  {item.description}
-                </p>
               </div>
             </Reveal>
           ))}
@@ -80,10 +94,19 @@ export default function Cases() {
               ["10+", "Years Experience"],
             ].map((metric, index) => (
               <Reveal key={index} delay={index * 0.08}>
-                <div className="border border-white/[0.04] bg-white/[0.02] rounded-3xl p-6 text-center hover:bg-white/[0.04] transition-all duration-300">
-                  <h3 className="text-3xl font-bold">{metric[0]}</h3>
+                <div className="group relative overflow-hidden border border-white/[0.06] bg-white/[0.03] rounded-3xl p-6 text-center transition-all duration-500 hover:-translate-y-1 hover:border-blue-400/20 hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(59,130,246,0.08)]">
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
 
-                  <p className="text-zinc-500 mt-2 text-sm">{metric[1]}</p>
+                  <div className="relative z-10">
+                    <h3 className="text-3xl font-bold transition-colors duration-300 group-hover:text-white">
+                      {metric[0]}
+                    </h3>
+
+                    <p className="text-zinc-500 mt-2 text-sm transition-colors duration-300 group-hover:text-zinc-400">
+                      {metric[1]}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}

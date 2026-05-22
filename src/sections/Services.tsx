@@ -57,8 +57,12 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative py-24 bg-[#030712] text-white overflow-hidden">
-      <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-blue-500/5 blur-[160px]" />
+    <section
+      id="services"
+      className="relative scroll-mt-[90px] pt-10 pb-24 bg-[#030712] text-white overflow-hidden"
+    >
+      {/* Background Glow */}
+      <div className="absolute left-1/2 top-20 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/5 blur-[180px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <Reveal>
@@ -80,24 +84,37 @@ export default function Services() {
           </div>
         </Reveal>
 
+        {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-16">
           {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
-              <Reveal key={index} delay={index * 0.08}>
-                <div className="group border border-white/[0.04] bg-white/[0.02] backdrop-blur-xl rounded-3xl p-6 hover:bg-white/[0.04] hover:-translate-y-0.5 transition-all duration-500">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6">
-                    <Icon className="text-blue-400" size={28} />
+              <Reveal key={index} delay={index * 0.06}>
+                <div className="group cursor-pointer relative overflow-hidden border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:border-blue-400/20 hover:bg-white/[0.05]">
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+
+                  <div className="relative z-10">
+                    {/* Icon */}
+                    <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-400/10 flex items-center justify-center mb-6 transition-all duration-500 group-hover:bg-blue-500/15 group-hover:scale-105">
+                      <Icon
+                        className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300"
+                        size={28}
+                      />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold mb-3 transition-colors duration-300 group-hover:text-white">
+                      {service.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors duration-300">
+                      {service.description}
+                    </p>
                   </div>
-
-                  <h3 className="text-xl font-semibold mb-3">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-zinc-400 leading-relaxed">
-                    {service.description}
-                  </p>
                 </div>
               </Reveal>
             );
