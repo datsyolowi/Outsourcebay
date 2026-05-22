@@ -29,7 +29,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-start gap-3">
-                <Clock className="text-blue-400 shrink-0 mt-0.5" size={18} />{" "}
+                <Clock className="text-blue-400 shrink-0 mt-0.5" size={18} />
                 <span>
                   New enquiries are reviewed during AEST business hours. Client
                   delivery can be scoped for extended or 24/7 coverage.
@@ -50,33 +50,6 @@ export default function Footer() {
                 >
                   Book a Strategy Call
                 </a>
-              </div>
-            </div>
-
-            {/* Mini Stats */}
-            <div className="flex flex-wrap gap-8 mt-10">
-              <div>
-                <h3 className="text-2xl font-bold">150+</h3>
-
-                <p className="text-sm text-zinc-500 mt-2">
-                  Offshore Specialists
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold">24/7</h3>
-
-                <p className="text-sm text-zinc-500 mt-2">
-                  Operational Support
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold">98%</h3>
-
-                <p className="text-sm text-zinc-500 mt-2">
-                  Client Satisfaction
-                </p>
               </div>
             </div>
           </div>
