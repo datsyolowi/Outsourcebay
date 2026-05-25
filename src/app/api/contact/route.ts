@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     const message = body.message || "No Message";
 
     const data = await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "Acme <onboarding@resend.dev>",
       to: "lmsconstantino@gmail.com",
       subject: "New OutsourceBay Inquiry",
       replyTo: email,
