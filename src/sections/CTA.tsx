@@ -1,6 +1,7 @@
 "use client";
 
 import Reveal from "../components/Reveal";
+import ContactForm from "../components/ContactForm";
 
 export default function CTA() {
   return (
@@ -28,6 +29,8 @@ export default function CTA() {
             Partner with a managed offshore operations team designed for
             scalability, efficiency, and long-term operational growth.
           </p>
+
+          <ContactForm />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
             <a
