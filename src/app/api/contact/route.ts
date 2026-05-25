@@ -42,8 +42,7 @@ export async function POST(req: Request) {
       success: true,
     });
   } catch (error) {
-    console.error(error);
-
+    console.log("CONTACT API ERROR:", error);
     return Response.json(
       {
         success: false,
