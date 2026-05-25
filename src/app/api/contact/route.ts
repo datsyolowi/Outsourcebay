@@ -1,30 +1,29 @@
 import { Resend } from "resend";
 
+export const runtime = "nodejs";
+
 export async function POST(req: Request) {
   try {
-    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+    const apiKey = process.env.RESEND_API_KEY;
 
-    if (!RESEND_API_KEY) {
-      return Response.json(
-        {
-          error: "Missing RESEND_API_KEY",
-        },
-        {
-          status: 500,
-        },
-      );
+    if (!apiKey) {
+      return Response.json({ error: "Missing API key" }, { status: 500 });
     }
 
-    const resend = new Resend(RESEND_API_KEY);
+    const resend = new Resend(apiKey);
 
     const body = await req.json();
 
-    const { name, email, company, message } = body;
+    const name = body.name || "No Name";
+    const email = body.email || "No Email";
+    const company = body.company || "No Company";
+    const message = body.message || "No Message";
 
-    await resend.emails.send({
-      from: "OutsourceBay <onboarding@resend.dev>",
+    const data = await resend.emails.send({
+      from: "onboarding@resend.dev",
       to: "lmsconstantino@gmail.com",
       subject: "New OutsourceBay Inquiry",
+      replyTo: email,
       html: `
         <h2>New Inquiry</h2>
 
@@ -40,12 +39,15 @@ export async function POST(req: Request) {
 
     return Response.json({
       success: true,
+      data,
     });
-  } catch (error) {
-    console.log("CONTACT API ERROR:", error);
+  } catch (error: any) {
+    console.error("RESEND ERROR:", error);
+
     return Response.json(
       {
         success: false,
+        error: error?.message || "Unknown error",
       },
       {
         status: 500,
