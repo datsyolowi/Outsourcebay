@@ -8,37 +8,45 @@ export default function ContactForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    const form = e.currentTarget;
+      const form = e.currentTarget;
 
-    const formData = new FormData(form);
+      const formData = new FormData(form);
 
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      company: formData.get("company"),
-      message: formData.get("message"),
-    };
+      const data = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        company: formData.get("company"),
+        message: formData.get("message"),
+      };
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    if (response.ok) {
-      alert("Message sent successfully.");
-      form.reset();
-    } else {
-      alert("Something went wrong.");
+      const result = await response.json();
+
+      console.log(result);
+
+      if (response.ok) {
+        alert("Message sent successfully.");
+        form.reset();
+      } else {
+        alert(result.error || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Server error.");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }
-
   return (
     <form
       onSubmit={handleSubmit}
