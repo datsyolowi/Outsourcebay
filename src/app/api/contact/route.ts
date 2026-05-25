@@ -22,13 +22,51 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
+    const name = body.name || "No Name";
+    const email = body.email || "No Email";
+    const company = body.company || "No Company";
+    const message = body.message || "No Message";
+
     const response = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
+      from: "OutsourceBay <onboarding@resend.dev>",
       to: "lmsconstantino@gmail.com",
-      subject: "Test Email",
+      subject: "New OutsourceBay Inquiry",
+      replyTo: email,
+
       html: `
-        <h1>OutsourceBay Test</h1>
-        <p>${JSON.stringify(body)}</p>
+        <div style="font-family: Arial, sans-serif; padding: 24px; color: #111827;">
+          <h1 style="font-size: 28px; margin-bottom: 24px;">
+            New OutsourceBay Inquiry
+          </h1>
+
+          <p style="margin-bottom: 12px;">
+            <strong>Name:</strong> ${name}
+          </p>
+
+          <p style="margin-bottom: 12px;">
+            <strong>Email:</strong> ${email}
+          </p>
+
+          <p style="margin-bottom: 12px;">
+            <strong>Company:</strong> ${company}
+          </p>
+
+          <div style="margin-top: 24px;">
+            <strong>Message:</strong>
+
+            <div
+              style="
+                margin-top: 10px;
+                padding: 16px;
+                border-radius: 12px;
+                background: #f3f4f6;
+                line-height: 1.7;
+              "
+            >
+              ${message}
+            </div>
+          </div>
+        </div>
       `,
     });
 
@@ -43,7 +81,6 @@ export async function POST(req: Request) {
       {
         success: false,
         error: error?.message,
-        fullError: error,
       },
       {
         status: 500,
