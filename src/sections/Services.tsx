@@ -85,18 +85,38 @@ export default function Services() {
         </Reveal>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-16 items-stretch">
           {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
               <Reveal key={index} delay={index * 0.06}>
-                <div className="group cursor-pointer relative overflow-hidden border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl rounded-3xl p-6 transition-all duration-500 hover:border-blue-400/20 hover:bg-white/[0.05]">
+                <div
+                  className="
+                    group
+                    cursor-pointer
+                    relative
+                    overflow-hidden
+                    border border-white/[0.06]
+                    bg-white/[0.03]
+                    backdrop-blur-xl
+                    rounded-3xl
+                    p-6
+                    h-full
+                    min-h-[320px]
+                    flex flex-col
+                    transition-all
+                    duration-500
+                    hover:border-blue-400/20
+                    hover:bg-white/[0.05]
+                  "
+                >
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+
                   {/* Hover Glow */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
 
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex flex-col h-full">
                     {/* Icon */}
                     <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-400/10 flex items-center justify-center mb-6 transition-all duration-500 group-hover:bg-blue-500/15 group-hover:scale-105">
                       <Icon

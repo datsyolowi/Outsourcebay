@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
+import CalendlyPopup from "../components/CalendlyPopup";
 export default function Hero() {
   return (
     <section
@@ -9,14 +9,11 @@ export default function Hero() {
       className="relative overflow-hidden bg-[#030712] text-white"
     >
       {/* Main Background Glow */}
-      <div className="absolute top-[-250px] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/10 rounded-full blur-[160px]" />
-
+      <div className="pointer-events-none absolute top-[-250px] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/10 rounded-full blur-[160px]" />
       {/* Secondary Glow */}
-      <div className="absolute bottom-[-250px] right-[-120px] w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px]" />
-
+      <div className="pointer-events-none absolute bottom-[-250px] right-[-120px] w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px]" />
       {/* Additional Ambient Glow */}
-      <div className="absolute top-[30%] left-[-150px] w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[140px]" />
-
+      <div className="pointer-events-none absolute top-[30%] left-[-150px] w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[140px]" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-28 pb-16 lg:pt-40 lg:pb-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -44,15 +41,8 @@ export default function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <a
-              href="#contact"
-              className="group inline-flex items-center justify-center bg-white text-black px-7 py-4 rounded-full font-medium transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-white/10"
-            >
-              <span className="transition-transform duration-300 group-hover:translate-x-0.5 inline-block">
-                Book Strategy Call
-              </span>
-            </a>
+          <div className="relative z-20 flex flex-col sm:flex-row gap-4 mt-8">
+            <CalendlyPopup />
 
             <a
               href="#services"

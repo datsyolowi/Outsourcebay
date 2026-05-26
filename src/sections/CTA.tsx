@@ -34,7 +34,9 @@ export default function CTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
             <a
-              href="#contact"
+              href="https://calendly.com/lmsconstantino/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-full font-medium hover:scale-[1.02] hover:shadow-2xl hover:shadow-white/10 transition-all duration-300"
             >
               Book Strategy Call

@@ -68,7 +68,9 @@ export default function Navbar() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex">
               <a
-                href="#contact"
+                href="https://calendly.com/lmsconstantino/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-white text-black px-6 py-3 rounded-full text-sm font-medium hover:scale-[1.02] transition-all duration-300"
               >
                 Book Call
@@ -87,35 +89,32 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-[#030712] transition-all duration-300 lg:hidden
-        ${
-          mobileOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={closeMenu}
-              className="text-2xl text-white font-medium"
-            >
-              {link.label}
-            </a>
-          ))}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-40 bg-[#030712] lg:hidden">
+          <div className="flex flex-col items-center justify-center h-full gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={closeMenu}
+                className="text-2xl text-white font-medium"
+              >
+                {link.label}
+              </a>
+            ))}
 
-          <a
-            href="#contact"
-            onClick={closeMenu}
-            className="mt-6 bg-white text-black px-8 py-4 rounded-full font-medium"
-          >
-            Book Strategy Call
-          </a>
+            <a
+              href="https://calendly.com/lmsconstantino/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="mt-6 bg-white text-black px-8 py-4 rounded-full font-medium"
+            >
+              Book Strategy Call
+            </a>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
